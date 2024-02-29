@@ -2,6 +2,7 @@ package com.unimarket.unimarket.application.category;
 
 import com.unimarket.unimarket.adapters.CategoryRepositoryService;
 import com.unimarket.unimarket.core.cases.category.DeleteCategoryUseCase;
+import com.unimarket.unimarket.core.entities.category.Category;
 import com.unimarket.unimarket.infra.data.jpa.entity.CategoryEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,8 +18,8 @@ public class DeleteCategoryUseCaseImpl implements DeleteCategoryUseCase {
     }
 
     @Override
-    public void delete(String category) {
-        CategoryEntity categoryEntity = categoryRepositoryService.findByCategoryName(category);
-        categoryRepositoryService.delete(categoryEntity);
+    public void delete(String categoryName) {
+        Category category = categoryRepositoryService.findByCategoryName(categoryName);
+        categoryRepositoryService.delete(category);
     }
 }

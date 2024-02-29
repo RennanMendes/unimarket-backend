@@ -2,7 +2,7 @@ package com.unimarket.unimarket.application.category;
 
 import com.unimarket.unimarket.adapters.CategoryRepositoryService;
 import com.unimarket.unimarket.core.cases.category.FindAllCategoriesUseCase;
-import com.unimarket.unimarket.infra.data.jpa.entity.CategoryEntity;
+import com.unimarket.unimarket.core.entities.category.Category;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +19,7 @@ public class FindAllCategoriesUseCaseImpl implements FindAllCategoriesUseCase {
     }
 
     @Override
-    public List<CategoryEntity> findAll() {
+    public List<Category> findAll() {
         return this.categoryRepositoryService.find();
     }
 }

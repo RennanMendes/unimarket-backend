@@ -4,7 +4,6 @@ import com.unimarket.unimarket.application.category.CreateCategoryUseCaseImpl;
 import com.unimarket.unimarket.application.category.DeleteCategoryUseCaseImpl;
 import com.unimarket.unimarket.core.cases.category.FindAllCategoriesUseCase;
 import com.unimarket.unimarket.core.entities.category.Category;
-import com.unimarket.unimarket.infra.data.jpa.entity.CategoryEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -29,21 +28,22 @@ public class CategoryController {
     }
 
     @GetMapping()
-    public ResponseEntity<List<CategoryEntity>> findAll(){
-        List<CategoryEntity> categories = this.findAllCategories.findAll();
+    public ResponseEntity<List<Category>> findAll() {
+        List<Category> categories = this.findAllCategories.findAll();
         return ResponseEntity.ok(categories);
     }
 
     @PostMapping()
-    public ResponseEntity<CategoryEntity> create(@RequestBody Category category, UriComponentsBuilder uriBuilder) {
-        CategoryEntity response = this.createCategory.create(category);
+    public ResponseEntity<Category> create(@RequestBody Category category, UriComponentsBuilder uriBuilder) {
+        Category response = this.createCategory.create(category);
         URI uri = uriBuilder.path("/category/create/{id}").buildAndExpand(response.getId()).toUri();
         return ResponseEntity.created(uri).body(response);
     }
 
     @DeleteMapping("/{categoryName}")
-    public ResponseEntity delete(@PathVariable String categoryName){
+    public ResponseEntity delete(@PathVariable String categoryName) {
         this.deleteCategory.delete(categoryName);
         return ResponseEntity.noContent().build();
     }
+
 }
