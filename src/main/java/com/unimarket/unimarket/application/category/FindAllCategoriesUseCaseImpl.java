@@ -1,8 +1,8 @@
-package com.unimarket.unimarket.application;
+package com.unimarket.unimarket.application.category;
 
 import com.unimarket.unimarket.adapters.CategoryRepositoryService;
 import com.unimarket.unimarket.core.cases.category.FindAllCategoriesUseCase;
-import com.unimarket.unimarket.infra.entity.CategoryEntity;
+import com.unimarket.unimarket.infra.data.jpa.entity.CategoryEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

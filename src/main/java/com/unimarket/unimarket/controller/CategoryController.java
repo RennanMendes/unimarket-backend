@@ -1,10 +1,10 @@
 package com.unimarket.unimarket.controller;
 
-import com.unimarket.unimarket.application.CreateCategoryUseCaseImpl;
-import com.unimarket.unimarket.application.DeleteCategoryUseCaseImpl;
+import com.unimarket.unimarket.application.category.CreateCategoryUseCaseImpl;
+import com.unimarket.unimarket.application.category.DeleteCategoryUseCaseImpl;
 import com.unimarket.unimarket.core.cases.category.FindAllCategoriesUseCase;
 import com.unimarket.unimarket.core.entities.category.Category;
-import com.unimarket.unimarket.infra.entity.CategoryEntity;
+import com.unimarket.unimarket.infra.data.jpa.entity.CategoryEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

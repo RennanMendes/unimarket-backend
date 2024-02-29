@@ -1,4 +1,4 @@
-package com.unimarket.unimarket.infra.entity;
+package com.unimarket.unimarket.infra.data.jpa.entity;
 
 import com.unimarket.unimarket.core.entities.category.Category;
 import jakarta.persistence.*;

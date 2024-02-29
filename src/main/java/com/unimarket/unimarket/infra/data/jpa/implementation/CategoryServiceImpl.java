@@ -1,9 +1,9 @@
-package com.unimarket.unimarket.infra.implementation;
+package com.unimarket.unimarket.infra.data.jpa.implementation;
 
 import com.unimarket.unimarket.adapters.CategoryRepositoryService;
 import com.unimarket.unimarket.core.entities.category.Category;
-import com.unimarket.unimarket.infra.entity.CategoryEntity;
-import com.unimarket.unimarket.infra.repository.CategoryRepository;
+import com.unimarket.unimarket.infra.data.jpa.entity.CategoryEntity;
+import com.unimarket.unimarket.infra.data.jpa.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,7 +25,7 @@ public class CategoryServiceImpl implements CategoryRepositoryService {
     }
 
     public CategoryEntity findByCategoryName(String categoryName) {
-        return categoryRepository.findByCategoryName(categoryName);
+        return categoryRepository.findByCategoryNameIgnoreCase(categoryName);
     }
 
     @Override
@@ -35,8 +35,7 @@ public class CategoryServiceImpl implements CategoryRepositoryService {
     }
 
     @Override
-    public void delete(String category) {
-        CategoryEntity categoryEntity = findByCategoryName(category);
-        categoryRepository.delete(categoryEntity);
+    public void delete(CategoryEntity category) {
+        categoryRepository.delete(category);
     }
 }
