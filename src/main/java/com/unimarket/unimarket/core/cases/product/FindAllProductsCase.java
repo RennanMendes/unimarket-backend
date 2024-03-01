@@ -4,6 +4,6 @@ import com.unimarket.unimarket.core.entities.product.Product;
 
 import java.util.List;
 
-public interface FindProductsByNameUseCase {
+public interface FindAllProductsCase {
     List<Product> findAll(String name);
 }

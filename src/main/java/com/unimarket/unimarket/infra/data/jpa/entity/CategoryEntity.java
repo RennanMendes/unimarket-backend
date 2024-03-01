@@ -19,8 +19,4 @@ public class CategoryEntity {
 
     @Column(unique = true)
     private String categoryName;
-
-    public CategoryEntity(Category category) {
-        this.categoryName = category.getCategoryName();
-    }
 }
