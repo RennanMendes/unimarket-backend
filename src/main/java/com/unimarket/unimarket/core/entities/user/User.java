@@ -16,4 +16,8 @@ public class User {
     private Address address;
     private UserType userType;
     private boolean isActive;
+
+    public void setActive(boolean active) {
+        isActive = active;
+    }
 }
