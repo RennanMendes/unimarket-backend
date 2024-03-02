@@ -14,7 +14,7 @@ public class CategoryRepositoryConverter implements RepositoryConverter<Category
     }
 
     @Override
-    public Category mapToEntity(final CategoryEntity entityObject) {
+    public Category mapToEntity(CategoryEntity entityObject) {
         return new Category(entityObject.getId(), entityObject.getCategoryName());
     }
 }
