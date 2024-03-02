@@ -8,20 +8,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class FindUserByEmailUseCaseImpl implements FindUserByEmailUseCase {
+public class FindUserByEmailAndIsActiveUseCaseImpl implements FindUserByEmailUseCase {
 
     private final UserRepositoryService repository;
 
     @Autowired
-    public FindUserByEmailUseCaseImpl(UserRepositoryService repository) {
+    public FindUserByEmailAndIsActiveUseCaseImpl(UserRepositoryService repository) {
         this.repository = repository;
     }
 
     @Override
     public User find(String email) {
-        if (repository.doesTheUserExist(email)){
+        if (!repository.doesTheUserExist(email)) {
             throw new UserNotFoundException();
         }
-        return this.repository.findByUserByEmail(email);
+        return this.repository.findByEmailAndIsActiveTrue(email);
     }
 }

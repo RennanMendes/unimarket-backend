@@ -15,9 +15,16 @@ public class User {
     private String password;
     private Address address;
     private UserType userType;
-    private boolean isActive;
+    private Boolean isActive;
 
-    public void setActive(boolean active) {
+    public User setActive(Boolean active) {
         isActive = active;
+        return this;
+    }
+
+    public User setNewUser() {
+        isActive = true;
+        this.userType = UserType.COMMON;
+        return this;
     }
 }

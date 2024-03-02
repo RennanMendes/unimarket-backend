@@ -7,7 +7,7 @@ public interface UserRepositoryService {
 
     boolean doesTheUserExist(String email);
 
-    User findByUserByEmail(String email);
+    User findByEmailAndIsActiveTrue(String email);
 
     User edit(User user);
 }

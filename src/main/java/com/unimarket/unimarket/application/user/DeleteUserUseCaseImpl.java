@@ -10,10 +10,10 @@ import org.springframework.stereotype.Service;
 public class DeleteUserUseCaseImpl implements DeleteUserUseCase {
 
     private final UserRepositoryService repository;
-    private final FindUserByEmailUseCaseImpl findUserByEmail;
+    private final FindUserByEmailAndIsActiveUseCaseImpl findUserByEmail;
 
     @Autowired
-    public DeleteUserUseCaseImpl(UserRepositoryService repository, FindUserByEmailUseCaseImpl findUserByEmail) {
+    public DeleteUserUseCaseImpl(UserRepositoryService repository, FindUserByEmailAndIsActiveUseCaseImpl findUserByEmail) {
         this.repository = repository;
         this.findUserByEmail = findUserByEmail;
     }
@@ -21,6 +21,6 @@ public class DeleteUserUseCaseImpl implements DeleteUserUseCase {
     @Override
     public void delete(String email) {
         User user = this.findUserByEmail.find(email);
-        user.setActive(false);
+        repository.save(user.setActive(false));
     }
 }

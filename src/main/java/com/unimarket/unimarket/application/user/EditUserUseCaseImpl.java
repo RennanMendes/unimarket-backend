@@ -4,15 +4,17 @@ import com.unimarket.unimarket.adapters.UserRepositoryService;
 import com.unimarket.unimarket.core.cases.user.EditUserUseCase;
 import com.unimarket.unimarket.core.entities.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+@Service
 public class EditUserUseCaseImpl implements EditUserUseCase {
 
     private final UserRepositoryService repository;
-    private final FindUserByEmailUseCaseImpl findUserByEmail;
+    private final FindUserByEmailAndIsActiveUseCaseImpl findUserByEmail;
 
     @Autowired
-    public EditUserUseCaseImpl(UserRepositoryService repository, FindUserByEmailUseCaseImpl findUserByEmail) {
+    public EditUserUseCaseImpl(UserRepositoryService repository, FindUserByEmailAndIsActiveUseCaseImpl findUserByEmail) {
         this.repository = repository;
         this.findUserByEmail = findUserByEmail;
     }
