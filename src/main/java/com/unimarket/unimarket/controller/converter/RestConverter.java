@@ -10,3 +10,4 @@ public interface RestConverter<A, B, C> {
         throw new UnsupportedOperationException();
     }
 }
+

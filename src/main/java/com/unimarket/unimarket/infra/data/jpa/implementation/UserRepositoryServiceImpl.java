@@ -28,16 +28,20 @@ public class UserRepositoryServiceImpl implements UserRepositoryService {
     }
 
     @Override
+    public boolean doesTheUserExist(Long id) {
+        return this.repository.existsByIdAndIsActiveTrue(id);
+    }
+
+    @Override
     public boolean doesTheUserExist(String email) {
         return this.repository.existsByEmailAndIsActiveTrue(email);
     }
 
     @Override
-    public User findByEmailAndIsActiveTrue(String email) {
-        return this.converter.mapToEntity(this.repository.findByEmailAndIsActiveTrue(email));
+    public User findByEmailAndIsActiveTrue(Long id) {
+        return this.converter.mapToEntity(this.repository.findByIdAndIsActiveTrue(id));
     }
 
-    @Override
     @Transactional
     public User edit(User user) {
         return this.save(user);

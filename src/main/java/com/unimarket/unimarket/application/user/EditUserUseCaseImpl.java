@@ -11,20 +11,17 @@ import org.springframework.transaction.annotation.Transactional;
 public class EditUserUseCaseImpl implements EditUserUseCase {
 
     private final UserRepositoryService repository;
-    private final FindUserByEmailAndIsActiveUseCaseImpl findUserByEmail;
+    private final FindUserByIdAndIsActiveUseCaseImpl findUserByEmail;
 
     @Autowired
-    public EditUserUseCaseImpl(UserRepositoryService repository, FindUserByEmailAndIsActiveUseCaseImpl findUserByEmail) {
+    public EditUserUseCaseImpl(UserRepositoryService repository, FindUserByIdAndIsActiveUseCaseImpl findUserByEmail) {
         this.repository = repository;
         this.findUserByEmail = findUserByEmail;
     }
 
     @Override
-    @Transactional
-    public User edit(String email, User userDto) {
-        User user = this.findUserByEmail.find(email);
-        //TODO -> atribuir os atributos que serão auterados do dto ao user
-
-        return user;
+    public User edit(Long id, User userDto) {
+        User user = this.findUserByEmail.find(id).update(userDto);
+        return this.repository.save(user);
     }
 }

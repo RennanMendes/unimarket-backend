@@ -3,7 +3,7 @@ package com.unimarket.unimarket.controller.dto;
 import com.unimarket.unimarket.core.entities.user.Address;
 import com.unimarket.unimarket.core.entities.user.User;
 
-public record UserResponseDto(
+public record UserDto(
         Long id,
         String firstName,
         String lastName,
@@ -11,7 +11,7 @@ public record UserResponseDto(
         Address address
 ) {
 
-    public UserResponseDto(User user) {
+    public UserDto(User user) {
         this(
                 user.getId(),
                 user.getFirstName(),

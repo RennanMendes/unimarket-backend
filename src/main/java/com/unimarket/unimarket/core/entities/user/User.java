@@ -27,4 +27,12 @@ public class User {
         this.userType = UserType.COMMON;
         return this;
     }
+
+    public User update(User userDto) {
+        this.firstName = userDto.getFirstName();
+        this.lastName = userDto.getLastName();
+        this.email = userDto.getEmail();
+        this.address = userDto.getAddress();
+        return this;
+    }
 }
