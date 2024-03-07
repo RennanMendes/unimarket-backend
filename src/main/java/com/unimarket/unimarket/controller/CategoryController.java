@@ -36,7 +36,7 @@ public class CategoryController {
     @PostMapping()
     public ResponseEntity<Category> create(@RequestBody Category category, UriComponentsBuilder uriBuilder) {
         Category response = this.createCategory.create(category);
-        URI uri = uriBuilder.path("/category/create/{id}").buildAndExpand(response.getId()).toUri();
+        URI uri = uriBuilder.path("/category/{id}").buildAndExpand(response.getId()).toUri();
         return ResponseEntity.created(uri).body(response);
     }
 

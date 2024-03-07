@@ -2,8 +2,8 @@ package com.unimarket.unimarket.core.cases.product;
 
 import com.unimarket.unimarket.core.entities.product.Product;
 
-import java.util.List;
+public interface EditProductUseCase {
 
-public interface FindAllProductsCase {
-    List<Product> findAll();
+    Product edit(Product product);
+
 }

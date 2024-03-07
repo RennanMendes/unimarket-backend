@@ -1,24 +1,31 @@
-package com.unimarket.unimarket.core.entities.product;
+package com.unimarket.unimarket.infra.data.jpa.entity;
 
 import com.unimarket.unimarket.core.entities.category.Category;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 
-@AllArgsConstructor
-@NoArgsConstructor
+@Entity
+@Table(name = "tb_product")
 @Getter
-@EqualsAndHashCode(of = "productCode")
-public class Product {
+@NoArgsConstructor
+@AllArgsConstructor
+public class ProductEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(unique = true)
     private String productCode;
     private String name;
     private BigDecimal price;
     private String description;
     private Integer amount;
     private String image;
-    private Category category;
+
+    @ManyToOne
+    private CategoryEntity category;
 }
