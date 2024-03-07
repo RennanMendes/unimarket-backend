@@ -11,9 +11,8 @@ public interface ProductRepository extends JpaRepository<ProductEntity, Long> {
 
     boolean existsByProductCodeIgnoreCase(String productCode);
 
-    @Query(value = "SELECT * FROM product WHERE LOWER(name) LIKE LOWER(CONCAT('%', :keyword, '%'))" +
+    @Query(value = "SELECT * FROM tb_product WHERE LOWER(name) LIKE LOWER(CONCAT('%', :keyword, '%'))" +
             " OR LOWER(price) LIKE LOWER(CONCAT('%', :keyword, '%'))" +
-            " OR LOWER(description) LIKE LOWER(CONCAT('%', :keyword, '%'))" +
-            " OR LOWER(category.name) LIKE LOWER(CONCAT('%', :keyword, '%'))", nativeQuery = true)
+            " OR LOWER(description) LIKE LOWER(CONCAT('%', :keyword, '%'))", nativeQuery = true)
     List<ProductEntity> searchByKeyword(String keyword);
 }

@@ -21,4 +21,8 @@ public class Product {
     private Integer amount;
     private String image;
     private Category category;
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
 }

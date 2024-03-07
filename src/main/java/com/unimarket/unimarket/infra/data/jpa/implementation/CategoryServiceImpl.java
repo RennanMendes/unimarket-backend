@@ -1,6 +1,7 @@
 package com.unimarket.unimarket.infra.data.jpa.implementation;
 
 import com.unimarket.unimarket.adapters.CategoryRepositoryService;
+import com.unimarket.unimarket.application.exception.CategoryNotFoundException;
 import com.unimarket.unimarket.core.entities.category.Category;
 import com.unimarket.unimarket.infra.data.jpa.converters.CategoryRepositoryConverter;
 import com.unimarket.unimarket.infra.data.jpa.entity.CategoryEntity;
@@ -42,6 +43,12 @@ public class CategoryServiceImpl implements CategoryRepositoryService {
     @Override
     public boolean doesCategoryNameExists(String categoryName) {
         return categoryRepository.existsByCategoryNameIgnoreCase(categoryName);
+    }
+
+    @Override
+    public Category findById(Long id) {
+        CategoryEntity entity = categoryRepository.findById(id).orElseThrow(CategoryNotFoundException::new);
+        return categoryConverter.mapToEntity(entity);
     }
 
     public Category findByCategoryName(String categoryName) {

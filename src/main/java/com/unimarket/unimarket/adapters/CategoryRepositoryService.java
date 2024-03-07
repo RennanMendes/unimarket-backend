@@ -14,4 +14,6 @@ public interface CategoryRepositoryService {
     void delete(Category category);
 
     boolean doesCategoryNameExists(String categoryName);
+
+    Category findById(Long id);
 }
